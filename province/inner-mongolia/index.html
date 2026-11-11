@@ -1,0 +1,308 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#17231f" />
+    <meta name="description" content="一页沉浸式旅行灵感网页，滑动探索下一站。" />
+    <title>山海之间｜旅行灵感</title>
+    <link rel="stylesheet" href="/shanhai-travel/styles.css" />
+    <link rel="stylesheet" href="/shanhai-travel/home-details.css" />
+    <script src="/shanhai-travel/scene-morph.js" defer></script>
+    <script src="/shanhai-travel/script.js" defer></script>
+  </head>
+  <body>
+    <main class="page-shell">
+      <section class="showcase" id="home" aria-label="旅行目的地展示">
+        <div class="scene" aria-hidden="true">
+          <img
+            class="scene-image cinematic-enter"
+            id="sceneImage"
+            src="/shanhai-travel/assets/province-ai/guangxi/01.jpg"
+            alt=""
+            fetchpriority="high"
+          />
+          <img class="scene-launch-image" id="sceneLaunchImage" alt="" hidden />
+          <div class="scene-shade"></div>
+          <div class="scene-light"></div>
+          <div class="scene-grain"></div>
+          <div class="scene-curtain"></div>
+        </div>
+
+        <header class="site-header">
+          <a class="brand" href="#home" aria-label="山海之间，返回首页">
+            <span class="brand-symbol" aria-hidden="true">
+              <svg viewBox="0 0 36 36" fill="none">
+                <circle cx="18" cy="18" r="16" stroke="currentColor" stroke-width="1.5" />
+                <path d="M6 23.5 14.5 12l4.3 6 3.2-4.5L30 24" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" />
+                <path d="M7 25h22" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" />
+              </svg>
+            </span>
+            <span class="brand-text">山海之间<span>WANDER JOURNAL</span></span>
+          </a>
+
+          <nav class="site-nav" aria-label="主导航">
+            <a href="#home" class="is-current">首页</a>
+            <a href="#destinations">风景切换</a>
+            <a href="#travel-map">全国地图</a>
+            <a href="#about">关于旅行</a>
+          </nav>
+
+          <a class="header-link" href="#travel-map">
+            开始探索
+            <span aria-hidden="true">↗</span>
+          </a>
+        </header>
+
+        <div class="intro">
+          <div class="intro-kicker"><span class="kicker-line"></span><span>中国旅行地图 · 你的旅行手记</span></div>
+          <h1 id="destinationTitle" class="hero-english-title" lang="en">GUILIN<br />LI RIVER</h1>
+          <p class="intro-overline hero-location"><span id="region">CHINA · GUANGXI</span></p>
+          <p class="intro-description" id="destinationDescription">从漓江的水光出发，<br />把中国的山海慢慢写进旅程。</p>
+          <a class="explore-button" href="#travel-map">
+            <span class="explore-icon" aria-hidden="true">↗</span>
+            打开中国旅行地图
+          </a>
+        </div>
+
+        <div class="ambient-label" aria-hidden="true">GO BEYOND THE MAP&nbsp; / &nbsp;2026</div>
+        <a class="scene-scroll" href="#journey"><span class="scene-scroll-line" aria-hidden="true"></span>向下翻开旅行手记 <span aria-hidden="true">↓</span></a>
+
+        <section class="destination-dock" id="destinations" aria-labelledby="dockTitle">
+          <div class="dock-heading">
+            <div>
+              <p class="section-number">01 — CHOOSE A VIEW</p>
+              <h2 id="dockTitle">换一处风景</h2>
+            </div>
+            <p class="dock-hint">点击卡片，切换首屏风景 <span aria-hidden="true">→</span></p>
+          </div>
+
+          <div class="cards-viewport" id="cardsViewport" tabindex="0" aria-label="切换首屏风景的卡片，可左右滑动">
+            <div class="cards-track">
+              <button class="destination-card is-active" type="button" data-index="0" aria-pressed="true">
+                <img src="/shanhai-travel/assets/province-ai/guangxi/01.jpg" alt="桂林漓江山水创作画面" />
+                <span class="card-shade"></span>
+                <span class="card-top">01 / 10 <span aria-hidden="true">↗</span></span>
+                <span class="card-copy"><span>CHINA · GUANGXI</span><strong>桂林山水</strong><small>GUILIN · LI RIVER</small></span>
+              </button>
+              <button class="destination-card" type="button" data-index="1" aria-pressed="false">
+                <img src="/shanhai-travel/assets/province-ai/xinjiang/01.jpg" alt="新疆喀纳斯湖山风景创作画面" loading="lazy" />
+                <span class="card-shade"></span>
+                <span class="card-top">02 / 10 <span aria-hidden="true">↗</span></span>
+                <span class="card-copy"><span>CHINA · XINJIANG</span><strong>新疆湖山</strong><small>KANAS · ALTAI</small></span>
+              </button>
+              <button class="destination-card" type="button" data-index="2" aria-pressed="false">
+                <img src="/shanhai-travel/assets/province-ai/hainan/01.jpg" alt="海南海岸风景创作画面" loading="lazy" />
+                <span class="card-shade"></span>
+                <span class="card-top">03 / 10 <span aria-hidden="true">↗</span></span>
+                <span class="card-copy"><span>CHINA · HAINAN</span><strong>海南海岸</strong><small>SANYA · SEA</small></span>
+              </button>
+              <button class="destination-card" type="button" data-index="3" aria-pressed="false">
+                <img src="/shanhai-travel/assets/province-ai/sichuan/01.jpg" alt="四川九寨沟山水创作画面" loading="lazy" />
+                <span class="card-shade"></span>
+                <span class="card-top">04 / 10 <span aria-hidden="true">↗</span></span>
+                <span class="card-copy"><span>CHINA · SICHUAN</span><strong>四川山水</strong><small>JIUZHAIGOU</small></span>
+              </button>
+              <button class="destination-card" type="button" data-index="4" aria-pressed="false">
+                <img src="/shanhai-travel/assets/province-ai/gansu/01.jpg" alt="敦煌沙漠风景创作画面" loading="lazy" />
+                <span class="card-shade"></span>
+                <span class="card-top">05 / 10 <span aria-hidden="true">↗</span></span>
+                <span class="card-copy"><span>CHINA · GANSU</span><strong>敦煌大漠</strong><small>DUNHUANG · DUNES</small></span>
+              </button>
+              <button class="destination-card" type="button" data-index="5" aria-pressed="false">
+                <img src="/shanhai-travel/assets/province-ai/yunnan/01.jpg" alt="云南丽江古城风景创作画面" loading="lazy" />
+                <span class="card-shade"></span>
+                <span class="card-top">06 / 10 <span aria-hidden="true">↗</span></span>
+                <span class="card-copy"><span>CHINA · YUNNAN</span><strong>丽江古城</strong><small>LIJIANG · OLD TOWN</small></span>
+              </button>
+              <button class="destination-card" type="button" data-index="6" aria-pressed="false">
+                <img src="/shanhai-travel/assets/hunan-mountain-hero.png" alt="湖南张家界云海与山峰风景创作画面" loading="lazy" />
+                <span class="card-shade"></span>
+                <span class="card-top">07 / 10 <span aria-hidden="true">↗</span></span>
+                <span class="card-copy"><span>CHINA · HUNAN</span><strong>湖南奇峰</strong><small>ZHANGJIAJIE</small></span>
+              </button>
+              <button class="destination-card" type="button" data-index="7" aria-pressed="false">
+                <img src="/shanhai-travel/assets/province-ai/beijing/02.jpg" alt="北京长城与群山风景创作画面" loading="lazy" />
+                <span class="card-shade"></span>
+                <span class="card-top">08 / 10 <span aria-hidden="true">↗</span></span>
+                <span class="card-copy"><span>CHINA · BEIJING</span><strong>长城山河</strong><small>GREAT WALL</small></span>
+              </button>
+              <button class="destination-card" type="button" data-index="8" aria-pressed="false">
+                <img src="/shanhai-travel/assets/province-ai/zhejiang/01.jpg" alt="浙江西湖晚霞风景创作画面" loading="lazy" />
+                <span class="card-shade"></span>
+                <span class="card-top">09 / 10 <span aria-hidden="true">↗</span></span>
+                <span class="card-copy"><span>CHINA · ZHEJIANG</span><strong>西湖晚霞</strong><small>WEST LAKE</small></span>
+              </button>
+              <button class="destination-card" type="button" data-index="9" aria-pressed="false">
+                <img src="/shanhai-travel/assets/province-ai/inner-mongolia/01.jpg" alt="内蒙古呼伦贝尔草原风景创作画面" loading="lazy" />
+                <span class="card-shade"></span>
+                <span class="card-top">10 / 10 <span aria-hidden="true">↗</span></span>
+                <span class="card-copy"><span>CHINA · INNER MONGOLIA</span><strong>草原牧歌</strong><small>HULUNBUIR</small></span>
+              </button>
+            </div>
+          </div>
+
+          <div class="dock-controls">
+            <div class="arrow-group" aria-label="切换目的地">
+              <button class="arrow-button" id="prevButton" type="button" aria-label="上一张目的地">←</button>
+              <button class="arrow-button" id="nextButton" type="button" aria-label="下一张目的地">→</button>
+            </div>
+            <div class="slide-progress" aria-hidden="true"><span id="progressBar"></span></div>
+            <div class="slide-count" aria-live="polite"><strong id="currentNumber">01</strong><span>/</span><span>10</span></div>
+          </div>
+        </section>
+      </section>
+
+      <section class="journey-bridge journey-compact" id="journey" aria-labelledby="journeyBridgeTitle">
+        <div class="journey-bridge-inner">
+          <h2 id="journeyBridgeTitle">从眼前的风景，<em>走进中国的山海。</em></h2>
+          <span class="journey-compact-route" aria-hidden="true"><i></i><span>✦</span><i></i></span>
+          <a class="journey-compact-link" href="#travel-map">翻开地图 <span aria-hidden="true">↓</span></a>
+        </div>
+      </section>
+
+      <section class="travel-map-section" id="travel-map" aria-labelledby="travelMapTitle">
+        <div class="travel-map-heading map-heading-integrated">
+          <div class="map-heading-copy">
+            <p class="about-label">02 — TRAVEL ACROSS CHINA</p>
+            <h2 id="travelMapTitle">一张地图，<em>收藏每一站。</em></h2>
+          </div>
+          <div class="province-search-area map-heading-search" id="provinceSearch">
+            <form class="province-search-form" id="provinceSearchForm" role="search" aria-label="搜索省份">
+              <label class="province-search-field" for="provinceSearchInput"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="10.5" cy="10.5" r="6.5"/><path d="m15.5 15.5 4.5 4.5"/></svg><span class="province-search-label">省份名称</span><input id="provinceSearchInput" name="province" type="search" placeholder="输入省份，如四川" autocomplete="off" enterkeyhint="search" aria-describedby="provinceSearchStatus" /></label>
+              <button type="submit">搜索 <span aria-hidden="true">↗</span></button>
+            </form>
+            <p class="province-search-status" id="provinceSearchStatus" role="status" aria-live="polite">输入省份名称，按搜索或回车。</p>
+            <ul class="province-search-results" id="provinceSearchResults" aria-label="匹配的省份" hidden></ul>
+          </div>
+        </div>
+        <div class="map-tools"><div><p id="mapGuide">点击地图或下方的地区名称；看不清时可以先放大。</p><p class="map-return-note" id="mapReturnNote" role="status" aria-live="polite" hidden></p></div><div class="map-tool-actions"><a href="#mapQuick">按名称选择 <span aria-hidden="true">↓</span></a><button id="mapZoom" type="button" aria-pressed="false">＋ 放大地图</button></div></div>
+        <figure class="travel-map-frame" id="travelMapFrame" tabindex="0" aria-label="全国旅行地图，放大后可拖动浏览" aria-describedby="mapGuide">
+          <div class="travel-map-canvas" id="travelMapCanvas">
+            <svg class="province-artwork" id="provinceArtwork" viewBox="225 75 1010 865" preserveAspectRatio="xMidYMid meet" aria-hidden="true"></svg>
+            <svg
+              class="province-overlay"
+              id="provinceOverlay"
+              viewBox="225 75 1010 865"
+              preserveAspectRatio="xMidYMid meet"
+              role="group"
+              aria-label="可点击的省份区域"
+            ></svg>
+            <div class="province-tooltip" id="provinceTooltip" role="status" aria-live="polite" hidden></div>
+          </div>
+        </figure>
+        <p class="map-data-note">地图轮廓参考 <a href="https://help.aliyun.com/zh/datav/datav-atlas/developer-reference/atlas-sdk-introduction" target="_blank" rel="noopener noreferrer">DataV.GeoAtlas</a>，目前为旅行预览图；地图细节还需与<a href="https://bzdt.tianditu.gov.cn/" target="_blank" rel="noopener noreferrer">标准地图</a>逐项核对。</p>
+        <div class="map-quick" id="mapQuick" aria-label="地区快捷入口"><div class="map-quick-heading"><span class="map-quick-icon" aria-hidden="true">✦</span><div><strong>找一个地方，开始旅行</strong><small>小地区快捷入口 · 点击名称直接进入</small></div></div><div class="map-quick-links"><a href="/shanhai-travel/province/beijing" data-province="beijing">北京 <span aria-hidden="true">↗</span></a><a href="/shanhai-travel/province/tianjin" data-province="tianjin">天津 <span aria-hidden="true">↗</span></a><a href="/shanhai-travel/province/shanghai" data-province="shanghai">上海 <span aria-hidden="true">↗</span></a><a href="/shanhai-travel/province/hong-kong" data-province="hong-kong">香港 <span aria-hidden="true">↗</span></a><a href="/shanhai-travel/province/macau" data-province="macau">澳门 <span aria-hidden="true">↗</span></a></div><details class="map-region-picker" id="mapRegionPicker"><summary><span><strong>按名称选择地区</strong><small>34 个地区，点名字直接进入</small></span><span class="map-region-toggle" aria-hidden="true">＋</span></summary><div class="map-region-groups" id="mapRegionGroups"></div></details></div>
+        <div class="map-journey-outro" id="map-to-moments">
+          <div class="map-journey-stamp" aria-hidden="true"><svg viewBox="0 0 48 48" fill="none"><circle cx="24" cy="24" r="21"/><path d="M9 30l10-12 7 8 4-5 9 9H9Z"/><path d="M13 34h22"/></svg><span>山海之间</span></div>
+          <div class="map-journey-copy"><span>MAP TO MOMENTS &nbsp; / &nbsp; 旅程继续</span><strong>从一张地图，走进一处风景。</strong></div>
+          <div class="map-journey-path" aria-hidden="true"><span></span><svg viewBox="0 0 270 48" fill="none" preserveAspectRatio="none"><path d="M2 30C50 30 54 8 100 12S151 43 200 31 237 11 267 16"/></svg><span>✦</span></div>
+          <a class="map-journey-next" href="#travel-moods">继续探索风景 <span aria-hidden="true">↓</span></a>
+        </div>
+      </section>
+
+      <section class="mood-section discovery-edit" id="travel-moods" aria-labelledby="moodTitle">
+        <div class="discovery-inner">
+          <div class="discovery-heading">
+            <div><p class="discovery-overline"><span>03</span> &nbsp; / &nbsp; 旅行灵感</p><h2 id="moodTitle">下一站，<em>随心而往。</em></h2></div>
+            <p class="discovery-intro">还没想好去哪儿？<br />从喜欢的风景，或一季好时光开始。</p>
+          </div>
+          <div class="discovery-toolbar">
+            <div class="discovery-tabs" role="tablist" aria-label="选择旅行灵感方式">
+              <button type="button" id="discoveryMoodTab" role="tab" aria-selected="true" aria-controls="discoveryMoodPanel" tabindex="0">跟着心情</button>
+              <button type="button" id="discoverySeasonTab" role="tab" aria-selected="false" aria-controls="season-guide" tabindex="-1">跟着季节</button>
+            </div>
+            <span class="discovery-aside" aria-hidden="true">不必赶路，去感受路。</span>
+          </div>
+          <div id="discoveryMoodPanel" class="discovery-panel" role="tabpanel" aria-labelledby="discoveryMoodTab" tabindex="0">
+            <div class="mood-track" id="moodTrack" tabindex="0" aria-label="四种旅行心情，手机上可左右滑动">
+                <a class="mood-card" href="/shanhai-travel/province/hunan" data-province="hunan"><img src="/shanhai-travel/assets/hunan-mountain-hero.png" alt="云雾缭绕的山峰" loading="lazy" /><span class="mood-number">01 / MOUNTAINS</span><span class="mood-card-bottom"><small>湖南 · 奇峰云海</small><strong>去山里<br />看云海</strong><span class="mood-card-link">出发去湖南 <i aria-hidden="true">↗</i></span></span></a>
+                <a class="mood-card" href="/shanhai-travel/province/hainan" data-province="hainan"><img src="/shanhai-travel/assets/province-ai/hainan/01.jpg" alt="海岛沙滩与海湾的风景创作画面" loading="lazy" /><span class="mood-number">02 / COAST</span><span class="mood-card-bottom"><small>海南 · 海岛时光</small><strong>去海边<br />吹晚风</strong><span class="mood-card-link">出发去海南 <i aria-hidden="true">↗</i></span></span></a>
+                <a class="mood-card" href="/shanhai-travel/province/guangdong" data-province="guangdong"><img src="/shanhai-travel/assets/guangdong-gallery/yongqing.png" alt="岭南风格的古街夜色" loading="lazy" /><span class="mood-number">03 / OLD STREETS</span><span class="mood-card-bottom"><small>广东 · 岭南街巷</small><strong>走进古城<br />慢慢逛</strong><span class="mood-card-link">出发去广东 <i aria-hidden="true">↗</i></span></span></a>
+                <a class="mood-card" href="/shanhai-travel/province/yunnan" data-province="yunnan"><img src="/shanhai-travel/assets/yunnan-landscape.png" alt="湖畔与远山的清晨" loading="lazy" /><span class="mood-number">04 / LAKESIDE</span><span class="mood-card-bottom"><small>云南 · 湖光山色</small><strong>在湖边<br />等日出</strong><span class="mood-card-link">出发去云南 <i aria-hidden="true">↗</i></span></span></a>
+            </div>
+            <div class="discovery-mobile-controls"><span>左右滑动，看看其他风景</span><div class="mood-arrows"><button type="button" data-mood-prev aria-label="向左浏览旅行心情">←</button><button type="button" data-mood-next aria-label="向右浏览旅行心情">→</button></div></div>
+          </div>
+          <div class="season-guide discovery-panel" id="season-guide" role="tabpanel" aria-labelledby="discoverySeasonTab" tabindex="0" hidden>
+            <div class="discovery-season-photo"><img id="seasonPickImage" src="/shanhai-travel/assets/province-ai/zhejiang/01.jpg" alt="浙江山水旅行灵感" loading="lazy" /><span>山海有时，旅途有期。</span></div>
+            <div class="season-guide-content">
+              <p class="season-eyebrow">四季来信</p>
+              <div class="season-choices" role="group" aria-label="选择旅行季节">
+                <button type="button" data-season="spring" aria-pressed="true"><span>01</span>春 <small>SPRING</small></button>
+                <button type="button" data-season="summer" aria-pressed="false"><span>02</span>夏 <small>SUMMER</small></button>
+                <button type="button" data-season="autumn" aria-pressed="false"><span>03</span>秋 <small>AUTUMN</small></button>
+                <button type="button" data-season="winter" aria-pressed="false"><span>04</span>冬 <small>WINTER</small></button>
+              </div>
+              <div class="season-pick" aria-live="polite" aria-atomic="true">
+                <div class="season-pick-text"><span class="season-pick-label" id="seasonPickLabel">春日灵感 &nbsp; / &nbsp; 浙江 · 西湖</span><h4 id="seasonPickTitle">在湖边，等一场春风。</h4><p id="seasonPickDescription">沿着湖岸慢慢走，看柳色和水光一起醒来。</p></div>
+                <a class="season-pick-link" id="seasonPickLink" href="/shanhai-travel/province/zhejiang" data-province="zhejiang">走进浙江 <span aria-hidden="true">↗</span></a>
+              </div>
+              <p class="season-note">每个季节，都有值得慢慢抵达的风景。<br />出发前，记得看看当地天气。</p>
+            </div>
+            <span class="season-watermark" id="seasonWatermark" aria-hidden="true">春</span>
+          </div>
+          <div class="discovery-end"><span>让喜欢的风景，成为出发的理由。</span><a href="#travel-routes">往下，读两段旅行故事 <span aria-hidden="true">↓</span></a></div>
+        </div>
+      </section>
+
+      <section class="routes-section" id="travel-routes" aria-labelledby="routesTitle">
+        <div class="discovery-inner">
+          <div class="routes-heading" data-discovery-reveal><div><p class="discovery-overline"><span>04</span> &nbsp; / &nbsp; STORIES FROM THE ROAD</p><h2 id="routesTitle">翻开旅途，<br /><em>读两段故事。</em></h2></div><p>从山水走到人间烟火。<br />两份旅行灵感，等你慢慢翻开。</p></div>
+          <div class="route-list">
+            <article class="route-story" data-discovery-reveal><div class="route-image"><img src="/shanhai-travel/assets/home-highlights/hunan-story.jpg" alt="凤凰古城与沱江暮色的风景创作画面" loading="lazy" /><span class="route-image-label">A NOTE FROM HUNAN &nbsp; / &nbsp; 01</span><span class="route-image-stamp">山<br />水<br />人<br />间</span></div><div class="route-copy"><div class="route-topline"><span>TRAVEL NOTE 01 &nbsp; / &nbsp; HUNAN</span><span>山水与人间</span></div><h3>一程奇峰，<br /><em>一城烟火。</em></h3><p>从云雾中的山峰出发，沿着沱江慢慢走，再去洞庭湖畔看看辽阔。</p><div class="route-stops" aria-label="湖南旅行灵感"><span>张家界</span><i></i><span>凤凰古城</span><i></i><span>岳阳楼</span></div><a class="route-link" href="/shanhai-travel/province/hunan" data-province="hunan">翻开湖南旅行手记 <span aria-hidden="true">↗</span></a></div></article>
+            <article class="route-story route-story-reverse" data-discovery-reveal><div class="route-image"><img src="/shanhai-travel/assets/home-highlights/guangdong-story.jpg" alt="开平碉楼与田野的风景创作画面" loading="lazy" /><span class="route-image-label">A NOTE FROM GUANGDONG &nbsp; / &nbsp; 02</span><span class="route-image-stamp">一<br />路<br />向<br />南</span></div><div class="route-copy"><div class="route-topline"><span>TRAVEL NOTE 02 &nbsp; / &nbsp; GUANGDONG</span><span>山海与烟火</span></div><h3>一盅早茶，<br /><em>一路岭南。</em></h3><p>看珠江的灯火亮起，走过田野里的碉楼，在山野间遇见岭南的另一面。</p><div class="route-stops" aria-label="广东旅行灵感"><span>广州</span><i></i><span>开平碉楼</span><i></i><span>丹霞山</span></div><a class="route-link" href="/shanhai-travel/province/guangdong" data-province="guangdong">翻开广东旅行手记 <span aria-hidden="true">↗</span></a></div></article>
+          </div>
+          <p class="routes-footnote">路线是旅行灵感，景点顺序可随你的时间和喜好调整。</p>
+        </div>
+      </section>
+
+      <section class="footprints" id="footprints" aria-labelledby="footprintsTitle">
+        <div class="footprints-inner">
+          <div class="footprints-heading">
+            <div><p class="discovery-overline"><span>05</span> &nbsp; / &nbsp; YOUR TRAVEL JOURNAL</p><h2 id="footprintsTitle">走过的路，<br /><em>都算数。</em></h2></div>
+            <p>每一段路，都值得好好珍藏。<br />把属于你的风景，慢慢收进这本手记。</p>
+          </div>
+          <div class="footprints-board">
+            <div class="footprints-rail" aria-hidden="true"><span>COLLECT LITTLE MOMENTS</span><span>✳</span><span>留给未来的回忆</span></div>
+            <div class="footprints-cards">
+              <a class="footprint-photo footprint-photo-one" href="/shanhai-travel/province/xinjiang" data-province="xinjiang" aria-label="查看新疆旅行灵感">
+                <img src="/shanhai-travel/assets/province-ai/xinjiang/01.jpg" alt="" loading="lazy" /><span><b>山野来信</b><small>旅行灵感 · 新疆 ↗</small></span>
+              </a>
+              <div class="footprint-note">
+                <div class="footprint-note-top"><span>POSTCARD / 01</span><span class="footprint-stamp" aria-hidden="true">✳</span></div>
+                <p class="footprint-script">Dear journey,</p>
+                <h3>为下一段旅程，<br />留一页空白。</h3>
+                <p class="footprint-copy">选一个去过的地方，在对应省份的相册中，收藏你拍下的风景。</p>
+                <a class="footprint-action" href="#travel-map">从地图选择一站 <span aria-hidden="true">↗</span></a>
+              </div>
+              <a class="footprint-photo footprint-photo-two" href="/shanhai-travel/province/zhejiang" data-province="zhejiang" aria-label="查看浙江旅行灵感">
+                <img src="/shanhai-travel/assets/province-ai/zhejiang/01.jpg" alt="" loading="lazy" /><span><b>一湖春色</b><small>旅行灵感 · 浙江 ↗</small></span>
+              </a>
+            </div>
+            <div class="footprints-board-foot"><span>ONE PLACE AT A TIME</span><span>一张照片，一段回忆</span></div>
+          </div>
+          <p class="footprints-caption">旅行足迹展示样式 · 你的照片收藏在各省相册中。</p>
+        </div>
+      </section>
+
+      <section class="about journey-ending" id="about" aria-labelledby="aboutTitle">
+        <div class="ending-scene">
+          <img src="/shanhai-travel/assets/province-ai/yunnan/01.jpg" alt="" loading="lazy" />
+          <div class="ending-content">
+            <p class="ending-label">THE JOURNEY CONTINUES &nbsp; / &nbsp; 未完待续</p>
+            <h2 id="aboutTitle">还有很多风景，<br /><em>等我们慢慢走过。</em></h2>
+            <p class="ending-copy">山海很远，旅途很长。<br />下一段故事，就从你想去的地方开始。</p>
+            <div class="ending-actions"><a href="#travel-map">回到旅行地图 <span aria-hidden="true">↗</span></a><a href="#home">回到顶部 <span aria-hidden="true">↑</span></a></div>
+          </div>
+          <span class="ending-number" aria-hidden="true">TO BE<br />CONTINUED.</span>
+        </div>
+        <div class="about-footer"><span>山海之间 · 旅行灵感</span><span>留一点时间，去看看世界。</span></div>
+      </section>
+    </main>
+    <section class="province-view" id="provinceView" hidden aria-live="polite"></section>
+    <script src="/shanhai-travel/province-photo-data.js" defer></script>
+    <script src="/shanhai-travel/province-ai-gallery-assets.js" defer></script>
+    <script src="/shanhai-travel/province-geometry.js" defer></script>
+    <script src="/shanhai-travel/province-map.js" defer></script>
+  </body>
+</html>

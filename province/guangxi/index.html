@@ -6,7 +6,7 @@
     <meta name="theme-color" content="#17231f" />
     <meta name="description" content="一页沉浸式旅行灵感网页，滑动探索下一站。" />
     <title>山海之间｜旅行灵感</title>
-    <link rel="stylesheet" href="/shanhai-travel/styles.css" />
+    <link rel="stylesheet" href="/shanhai-travel/styles.css?v=static-map-20261111" />
     <link rel="stylesheet" href="/shanhai-travel/home-details.css" />
     <script src="/shanhai-travel/scene-morph.js" defer></script>
     <script src="/shanhai-travel/script.js" defer></script>
@@ -179,7 +179,7 @@
         <div class="map-tools"><div><p id="mapGuide">点击地图或下方的地区名称；看不清时可以先放大。</p><p class="map-return-note" id="mapReturnNote" role="status" aria-live="polite" hidden></p></div><div class="map-tool-actions"><a href="#mapQuick">按名称选择 <span aria-hidden="true">↓</span></a><button id="mapZoom" type="button" aria-pressed="false">＋ 放大地图</button></div></div>
         <figure class="travel-map-frame" id="travelMapFrame" tabindex="0" aria-label="全国旅行地图，放大后可拖动浏览" aria-describedby="mapGuide">
           <div class="travel-map-canvas" id="travelMapCanvas">
-            <svg class="province-artwork" id="provinceArtwork" viewBox="225 75 1010 865" preserveAspectRatio="xMidYMid meet" aria-hidden="true"></svg>
+            <img class="travel-map-image" src="/shanhai-travel/assets/travel-map-fallback.jpg" width="1287" height="1102" alt="中国各地区旅行插画地图" />
             <svg
               class="province-overlay"
               id="provinceOverlay"
@@ -303,6 +303,6 @@
     <script src="/shanhai-travel/province-photo-data.js" defer></script>
     <script src="/shanhai-travel/province-ai-gallery-assets.js" defer></script>
     <script src="/shanhai-travel/province-geometry.js" defer></script>
-    <script src="/shanhai-travel/province-map.js?v=mobile-compat-20261111" defer></script>
+    <script src="/shanhai-travel/province-map.js?v=static-map-20261111" defer></script>
   </body>
 </html>

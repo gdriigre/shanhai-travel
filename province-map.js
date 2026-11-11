@@ -42,7 +42,6 @@ provinceData.push(
 
 const mapCanvas = document.getElementById("travelMapCanvas");
 const mapFrame = document.getElementById("travelMapFrame");
-const mapArtwork = document.getElementById("provinceArtwork");
 const mapOverlay = document.getElementById("provinceOverlay");
 const mapTooltip = document.getElementById("provinceTooltip");
 const pageShell = document.querySelector(".page-shell");
@@ -149,57 +148,8 @@ function addProvincePath(province, d, pathIndex) {
 }
 
 function renderMapOverlay() {
-  if (!mapOverlay || !mapArtwork || !mapShapes.length) return;
+  if (!mapOverlay || !mapShapes.length) return;
   mapOverlay.replaceChildren();
-  mapArtwork.replaceChildren();
-  const colors = ["#eedbae", "#d9e7c4", "#ead2b5", "#dce6bd", "#e9deb3", "#cfe3d5", "#f0d8c7", "#e3e8c7"];
-  const defs = svgNode("defs");
-  mapArtwork.appendChild(defs);
-  const sceneGroups = [
-    { image: "/shanhai-travel/assets/province-scenes-west-v3-mobile.jpg", places: ["xinjiang", "ningxia", "gansu", "qinghai", "tibet", "sichuan", "yunnan", "guizhou", "chongqing", "guangxi", "hainan", "inner-mongolia"] },
-    { image: "/shanhai-travel/assets/province-scenes-north-v3-mobile.jpg", places: ["hebei", "beijing", "tianjin", "liaoning", "heilongjiang", "jilin", "shandong", "shanxi", "shaanxi", "henan", "hubei", "hunan"] },
-    { image: "/shanhai-travel/assets/province-scenes-east-v3-mobile.jpg", places: ["guangdong", "fujian", "jiangxi", "zhejiang", "jiangsu", "anhui", "shanghai", "taiwan", "hong-kong", "macau"] },
-  ];
-  const scenes = new Map(sceneGroups.flatMap(({image, places}) => places.map((slug, index) => [slug, {image, index}])));
-  mapShapes.forEach((shape, index) => {
-    const province = provinceBySlug.get(shape.slug);
-    if (!province) return;
-    const clip = svgNode("clipPath", { id: `clip-${shape.slug}`, clipPathUnits: "userSpaceOnUse" });
-    clip.appendChild(svgNode("path", { d: shape.d, "fill-rule": "evenodd", "clip-rule": "evenodd" }));
-    defs.appendChild(clip);
-    const paint = svgNode("path", { d: shape.d, class: "map-province-paint", fill: colors[index % colors.length], "fill-rule": "evenodd", "data-slug": shape.slug });
-    mapArtwork.appendChild(paint);
-    if (shape.insetD) mapArtwork.appendChild(svgNode("path", { d: shape.insetD, class: "map-province-paint", fill: colors[index % colors.length], "fill-rule": "evenodd" }));
-    const scene = scenes.get(shape.slug);
-    if (scene) {
-      let box = null;
-      try { box = paint.getBBox(); } catch (_) { /* Keep the base map usable on browsers that cannot measure a shape. */ }
-      if (box && box.width > 0 && box.height > 0) {
-        const group = svgNode("g", { "clip-path": `url(#clip-${shape.slug})`, class: "map-province-scene", "data-slug": shape.slug });
-        const tile = svgNode("svg", { x: box.x, y: box.y, width: box.width, height: box.height, viewBox: `${(scene.index % 4)*362} ${Math.floor(scene.index/4)*362} 362 362`, preserveAspectRatio: "xMidYMid slice", overflow: "hidden" });
-        tile.appendChild(svgNode("image", { href: scene.image, x: 0, y: 0, width: 1448, height: 1086 }));
-        group.appendChild(tile);
-        mapArtwork.appendChild(group);
-      }
-    }
-  });
-  // Draw outlines on top of the clipped images, using the exact hit geometry.
-  mapShapes.forEach((shape) => {
-    mapArtwork.appendChild(svgNode("path", { d: shape.d, class: "map-province-outline", "fill-rule": "evenodd" }));
-    if (shape.insetD) mapArtwork.appendChild(svgNode("path", { d: shape.insetD, class: "map-province-outline", "fill-rule": "evenodd" }));
-  });
-  if (window.travelMapGeometry.insetDashes) mapArtwork.appendChild(svgNode("path", { d: window.travelMapGeometry.insetDashes, class: "map-inset-dashes", "fill-rule": "evenodd" }));
-  const insetCaption = svgNode("text", { x: 1150, y: 800, "text-anchor": "middle", class: "map-inset-caption" });
-  insetCaption.textContent = "南海诸岛";
-  mapArtwork.appendChild(insetCaption);
-  const smallRegions = new Set(["beijing", "tianjin", "shanghai", "hong-kong", "macau"]);
-  mapShapes.forEach((shape) => {
-    const province = provinceBySlug.get(shape.slug);
-    if (!province || smallRegions.has(shape.slug)) return;
-    const label = svgNode("text", { x: shape.label[0], y: shape.label[1]+5, "text-anchor": "middle", class: "map-place-label", "font-size": shape.area < 6 ? 16 : 21 });
-    label.textContent = province.name;
-    mapArtwork.appendChild(label);
-  });
   provinceData.forEach((province) => province.paths.forEach((d, pathIndex) => addProvincePath(province, d, pathIndex)));
   if (isMapDebug) {
     provinceData.forEach((province) => {

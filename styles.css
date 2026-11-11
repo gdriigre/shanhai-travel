@@ -1341,3 +1341,7 @@ body.province-mode .page-shell { display: none; }
   .map-heading-integrated .about-label { font-size: 9px; letter-spacing: .11em; margin-bottom: 9px; }
   .map-heading-search .province-search-field input { font-size: 16px; }
 }
+
+/* Keep the complete map visible on older mobile browsers, including vivo. */
+.travel-map-canvas { aspect-ratio: auto; }
+.travel-map-canvas .travel-map-image { position: relative; inset: auto; width: 100%; height: auto; }

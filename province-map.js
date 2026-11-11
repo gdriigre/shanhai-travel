@@ -61,7 +61,10 @@ mapShapes.forEach((shape) => {
 
 function svgNode(name, attributes = {}) {
   const node = document.createElementNS("http://www.w3.org/2000/svg", name);
-  Object.entries(attributes).forEach(([key, value]) => node.setAttribute(key, value));
+  Object.entries(attributes).forEach(([key, value]) => {
+    node.setAttribute(key, value);
+    if (name === "image" && key === "href") node.setAttributeNS("http://www.w3.org/1999/xlink", "xlink:href", value);
+  });
   return node;
 }
 
@@ -153,9 +156,9 @@ function renderMapOverlay() {
   const defs = svgNode("defs");
   mapArtwork.appendChild(defs);
   const sceneGroups = [
-    { image: "/shanhai-travel/assets/province-scenes-west-v3.png", places: ["xinjiang", "ningxia", "gansu", "qinghai", "tibet", "sichuan", "yunnan", "guizhou", "chongqing", "guangxi", "hainan", "inner-mongolia"] },
-    { image: "/shanhai-travel/assets/province-scenes-north-v3.png", places: ["hebei", "beijing", "tianjin", "liaoning", "heilongjiang", "jilin", "shandong", "shanxi", "shaanxi", "henan", "hubei", "hunan"] },
-    { image: "/shanhai-travel/assets/province-scenes-east-v3.png", places: ["guangdong", "fujian", "jiangxi", "zhejiang", "jiangsu", "anhui", "shanghai", "taiwan", "hong-kong", "macau"] },
+    { image: "/shanhai-travel/assets/province-scenes-west-v3-mobile.jpg", places: ["xinjiang", "ningxia", "gansu", "qinghai", "tibet", "sichuan", "yunnan", "guizhou", "chongqing", "guangxi", "hainan", "inner-mongolia"] },
+    { image: "/shanhai-travel/assets/province-scenes-north-v3-mobile.jpg", places: ["hebei", "beijing", "tianjin", "liaoning", "heilongjiang", "jilin", "shandong", "shanxi", "shaanxi", "henan", "hubei", "hunan"] },
+    { image: "/shanhai-travel/assets/province-scenes-east-v3-mobile.jpg", places: ["guangdong", "fujian", "jiangxi", "zhejiang", "jiangsu", "anhui", "shanghai", "taiwan", "hong-kong", "macau"] },
   ];
   const scenes = new Map(sceneGroups.flatMap(({image, places}) => places.map((slug, index) => [slug, {image, index}])));
   mapShapes.forEach((shape, index) => {
@@ -169,8 +172,9 @@ function renderMapOverlay() {
     if (shape.insetD) mapArtwork.appendChild(svgNode("path", { d: shape.insetD, class: "map-province-paint", fill: colors[index % colors.length], "fill-rule": "evenodd" }));
     const scene = scenes.get(shape.slug);
     if (scene) {
-      const box = paint.getBBox();
-      if (box.width > 0 && box.height > 0) {
+      let box = null;
+      try { box = paint.getBBox(); } catch (_) { /* Keep the base map usable on browsers that cannot measure a shape. */ }
+      if (box && box.width > 0 && box.height > 0) {
         const group = svgNode("g", { "clip-path": `url(#clip-${shape.slug})`, class: "map-province-scene", "data-slug": shape.slug });
         const tile = svgNode("svg", { x: box.x, y: box.y, width: box.width, height: box.height, viewBox: `${(scene.index % 4)*362} ${Math.floor(scene.index/4)*362} 362 362`, preserveAspectRatio: "xMidYMid slice", overflow: "hidden" });
         tile.appendChild(svgNode("image", { href: scene.image, x: 0, y: 0, width: 1448, height: 1086 }));
